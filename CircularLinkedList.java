@@ -5,7 +5,18 @@ public class CircularLinkedList<Item> implements APList<Item>{
 
     public CircularLinkedList(){
   _top = null;
+	_top = null;
 	_length = 0;
+    }
+
+    public DblListNode<Item> getTop(){
+	return _top;
+    }
+
+    public DblListNode<Item> setTop(DblListNode<Item> x){
+	DblListNode<Item> ans = _top;
+	_top = x;
+	return _top;
     }
 
     //adds to the end
@@ -40,6 +51,10 @@ public class CircularLinkedList<Item> implements APList<Item>{
 	}
 	return temp; //Returns the actual node instead of the value of the node
     }  
+
+    public void dec(){
+	_length--;
+    }
     
     //O(n)
     // inserts newVale at index. returns the old value 
@@ -79,4 +94,5 @@ public class CircularLinkedList<Item> implements APList<Item>{
 	// x.set(0, 7);
 	 System.out.println(x);
     }
+}
 }
