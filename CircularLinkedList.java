@@ -4,7 +4,6 @@ public class CircularLinkedList<Item> implements APList<Item>{
     private int _length;
 
     public CircularLinkedList(){
-  _top = null;
 	_top = null;
 	_length = 0;
     }
@@ -94,5 +93,4 @@ public class CircularLinkedList<Item> implements APList<Item>{
 	// x.set(0, 7);
 	 System.out.println(x);
     }
-}
 }
