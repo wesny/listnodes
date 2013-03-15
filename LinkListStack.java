@@ -28,7 +28,7 @@ public class LinkListStack<Item> implements Stack<Item>{
 	String ans = "";
 	ListNode<Item> temp = _top;
 	while (temp != null){
-	    System.out.println(temp);
+	    ans += temp + " ";
 	    temp = temp.getNext();
 	}
 	return ans;
