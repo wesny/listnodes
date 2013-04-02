@@ -77,16 +77,15 @@ public class IntStack{
 	node = previous;
 	return node;
     }
-
+                                                     
     public static ListNode<Integer> reverse3(ListNode<Integer> node){
 	LinkListStack<ListNode<Integer>> stack = 
 	    new LinkListStack<ListNode<Integer>>();
 	ListNode<Integer> walker = node;
-	while (walker.getNext() != null){
+	while (walker != null){
 	    stack.push(walker);
 	    walker = walker.getNext();
 	}
-	stack.push(walker);
 	node = stack.peek();
 	ListNode<Integer> temp;
 	while (!stack.isEmpty()){
@@ -98,6 +97,23 @@ public class IntStack{
 	}
 	return node;
     }
+
+    public static ListNode<Integer> reverse4(ListNode<Integer> node){
+	LinkListStack<Integer> stack = 
+	    new LinkListStack<Integer>();
+	ListNode<Integer> head = node;
+	while (node != null){
+	    stack.push(node.getValue());
+	    node = node.getNext();
+	}
+	node = head;
+	while (!stack.isEmpty()){
+	    node.setValue(stack.pop());
+	    node = node.getNext();
+	}
+	return head;
+    }
+
 
     public static void main(String[] args){
 	// IntStack test = new IntStack();
@@ -115,7 +131,7 @@ public class IntStack{
 	ListNode<Integer> three = new ListNode<Integer>(3, four);
 	ListNode<Integer> two = new ListNode<Integer>(2, three);
 	ListNode<Integer> one = new ListNode<Integer>(1, two);
-	System.out.println(reverse3(one));
+	System.out.println(reverse4(one));
 	//System.out.println(reverse2(one));
 	String ans = "";
 	ListNode<Integer> temp = five;
