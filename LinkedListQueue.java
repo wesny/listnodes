@@ -1,3 +1,7 @@
+import java.util.Iterator;
+import java.util.ArrayList;
+
+
 public class LinkedListQueue<Item> implements Queue<Item>{
 
     private ListNode<Item> _top;
@@ -36,13 +40,34 @@ public class LinkedListQueue<Item> implements Queue<Item>{
     }
 
     public String toString(){
-       String ans = "";
-       ListNode<Item> temp = _top;
-       while (temp != null){
-	   ans += temp.getValue() + " ";
-	   temp = temp.getNext();
-       }
-       return ans;
+	String ans = "";
+	ListNode<Item> temp = _top;
+	while (temp != null){
+	    ans += temp.getValue() + " ";
+	    temp = temp.getNext();
+	}
+	return ans;
+    }
+    
+    public Iterator<Item> iterator(){
+	return new MyIterator();
+    }
+    
+    public class MyIterator implements Iterator<Item>{
+
+	public MyIterator(){
+	}
+
+	public boolean hasNext(){
+	    return !isEmpty();
+	}
+
+	public Item next(){
+	    return dequeue();
+	}
+
+	public void remove(){
+	}
     }
 
     public static void main(String[] args){

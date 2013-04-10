@@ -2,6 +2,9 @@
 //Mr. Platek P1 APCS
 //*************************LinkedList*************************
 
+import java.util.Iterator;
+import java.util.ArrayList;
+
 public class LinkedList<Item> implements APList<Item>{
 
     private DblListNode<Item> _top, _end;
@@ -160,6 +163,40 @@ public class LinkedList<Item> implements APList<Item>{
 	}
 	return ans;
     }
+
+    public Iterator<Item> iterator(){
+	return new MyIterator();
+    }
+
+    public class MyIterator implements Iterator<Item>{
+
+	private ArrayList<Integer> done;
+	private Integer next;
+
+	public MyIterator(){
+	    done = new ArrayList<Integer>();
+	    next = 0;
+	}
+
+	public boolean hasNext(){
+	    return _length != done.size();
+	}
+
+	public Item next(){
+	    DblListNode<Item> temp = _top;
+	    Integer rand = (int)(Math.random() * _length);
+	    while (done.contains(rand)){
+		rand = (int)(Math.random() * _length);
+	    }
+	    done.add(rand);
+	    next = rand;
+	    return get(next);
+	}
+
+	public void remove(){
+	    delete(next);
+	}
+    }
     
     public static void main(String[] args){
 	LinkedList<Integer> x = new LinkedList<Integer>();
@@ -168,14 +205,9 @@ public class LinkedList<Item> implements APList<Item>{
 	x.add(2);
 	x.addRight(4);
 	x.addRight(7);
-	System.out.println(x.find(2));
-	System.out.println(x.find(7));
-	System.out.println(x.getNode(1));
-	x.delete(0);
-	x.removeRight();
-	x.removeLeft();
-	x.set(0, 7);
 	System.out.println(x);
+	for (int temp: x)
+	    System.out.println(temp);
     }
 
 }

@@ -1,4 +1,6 @@
-public interface APList<Item>{
+import java.util.*;
+
+public interface APList<Item> extends Iterable<Item>{
 
     boolean add(Item x);  // adds to the end
     Item get(int index);  // returns the item at the given index
@@ -6,5 +8,7 @@ public interface APList<Item>{
     // returns the old value 
 					 
     int size(); // returns the number of items in the list
+
+    Iterator<Item> iterator();
 
 }
